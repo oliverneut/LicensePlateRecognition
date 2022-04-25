@@ -1,14 +1,13 @@
 #!/bin/bash
 
-T=$(find /home/imageprocessingcourse/ -type f -name "*test*")
 
-/usr/local/bin/python /home/imageprocessingcourse/main.py --file_path $T --output_path .
+T=$(find /home/imageprocessingcourse/ -type f -name "*test*" | head -n 1)
 
-F=$(find /home/imageprocessingcourse/ -type f -name "*Output*") 
+/usr/local/bin/python /home/imageprocessingcourse/main.py --file_path $T --output_path ./Output.csv
 
-G=$(find /home/imageprocessingcourse/ -type f -name "*TruthTest*")
+G=$(find /home/imageprocessingcourse/ -type f -name "*groundTruth*" | head -n 1)
 
-/usr/local/bin/python /home/imageprocessingcourse/evaluation.py --file_path $F  --ground_truth_path $G
+/usr/local/bin/python /home/imageprocessingcourse/evaluation.py --file_path ./Output.csv --ground_truth_path $G
 
 #Comment out lines until here if you dont want docker to evaluate on start.
 

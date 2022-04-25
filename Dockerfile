@@ -1,6 +1,7 @@
 # Start from the  base file
 FROM opencvcourses/opencv-docker:4.4.0
 
+WORKDIR /home/imageprocessingcourse
 
 RUN cd /home/ \
 && apt-get update -qq \
